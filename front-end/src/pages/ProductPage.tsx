@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import produtos from "../../../back-end/produtosTeste";
+import produtos from "../../../back-end/src/data/produtosTeste";
 import { Button } from "@/components/ui/button";
 
 const ProductPage = () => {
