@@ -17,6 +17,9 @@ const ProductPage = () => {
         <div className="bg-gray-200 p-5">
           <p>{produto?.descricao}</p>
         </div>
+        <div className="p-5">
+          <p>Valor: R${produto?.valor}</p>
+        </div>
         <Button className="bg-green-400 hover:bg-green-600 p-5 text-lg my-5">Adicionar ao carrinho</Button>
       </div>
     </div>

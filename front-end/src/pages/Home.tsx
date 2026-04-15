@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import produtos from "../../../back-end/produtosTeste";
-import { Card, CardAction, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -12,11 +12,14 @@ const Home = () => {
                 <p className="p-10">Produtos</p>
                 <div className="grid grid-cols-4 gap-20">
                     {produtos.map((produto) => (
-                        <Card key={produto.id} className="bg-grey p-10">
+                        <Card key={produto.id} className="bg-grey p-10 flex flex-col items-center">
                             <CardTitle>{produto.nome}</CardTitle>
                             <CardDescription>{produto.descricao}</CardDescription>
+                            <CardContent>
+                                <img className="h-[200px]" src={produto?.imagem}></img>
+                            </CardContent>
                             <CardFooter>
-                                <Button>
+                                <Button className="">
                                     <Link to={`/product/${produto.id}`}>Ver Detalhes</Link>
                                 </Button>
                             </CardFooter>
