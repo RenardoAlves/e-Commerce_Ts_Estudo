@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { cart } from "../data/cartDb.ts";
 
-import produtos from "../data/produtosTeste.ts"
+import produtos from "../data/produtosTeste.ts";
 
 export const getCart = (req: Request, res: Response) => {
     res.json(cart);

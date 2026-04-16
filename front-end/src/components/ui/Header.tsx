@@ -9,7 +9,7 @@ const Header = () => {
                                 <NavigationMenuList className="flex gap-20 h-12">
                                     <NavigationMenuItem>
                                         <NavigationMenuLink>
-                                            <Link to="/">Início</Link>
+                                            <Link to={"/"}>Início</Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
@@ -34,7 +34,7 @@ const Header = () => {
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink>
-                                            <img className="max-h-[30px]" src="/images/carrinho.png"></img>
+                                            <Link to={"/cart"}><img className="max-h-[30px]" src="/images/carrinho.png"></img></Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                 </NavigationMenuList>
