@@ -1,8 +1,25 @@
 import { useParams } from "react-router-dom"
 import produtos from "../../../back-end/src/data/produtosTeste";
 import { Button } from "@/components/ui/button";
+import axios from 'axios';
+import type { CartItem } from "../../../back-end/src/models/cart";
 
 const ProductPage = () => {
+
+  const adicionarCarrinho = async (produto: any) => {
+    try {
+      await axios.post('/api/cart', {
+        id: produto.id,
+        quantidade: 1
+      }, {
+        headers: {
+          'id': produto.id
+        }
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const { id } = useParams();
 
@@ -20,7 +37,7 @@ const ProductPage = () => {
         <div className="p-5">
           <p>Valor: R${produto?.valor}</p>
         </div>
-        <Button className="bg-green-400 hover:bg-green-600 p-5 text-lg my-5">Adicionar ao carrinho</Button>
+        <Button onClick={() => adicionarCarrinho(produto)} className="bg-green-400 hover:bg-green-600 p-5 text-lg my-5">Adicionar ao carrinho</Button>
       </div>
     </div>
   )

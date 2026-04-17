@@ -53,9 +53,9 @@ const Cart = () => {
                         <CardAction className="ml-2">{produto.nome}</CardAction>
                         <CardContent className="flex flex-row">
                             <div><img src={produto.imagem} className="max-h-[80px]"></img></div>
-                            <div className="ml-auto">R${produto.valor}</div>
+                            <div className="ml-auto">Valor unitário: R${produto.valor}</div>
                         </CardContent>
-                        <CardDescription className="ml-2">{produto.descricao}</CardDescription>
+                        <CardDescription className="ml-2">Quantidade: {produto.quantidade}</CardDescription>
                     </Card>
                     )))}
                 </div>
