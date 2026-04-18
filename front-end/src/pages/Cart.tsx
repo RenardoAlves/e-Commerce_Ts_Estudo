@@ -28,10 +28,28 @@ const Cart = () => {
 
     }, []);
 
-    const removerCarrinho = async (produto: any) => {
+    const deletarItem = async (produto: any) => {
         try {
-            await axios.delete(`/api/cart/${produto.id}`)
-            setCart(prev => prev.filter(item => item.id !== produto.id));
+            const res = await axios.delete(`/api/cart/${produto.id}`)
+            setCart(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const incrementarItem = async (produto: any, res: Request) => {
+        try {
+            const res = await axios.patch(`/api/cart/${produto.id}/increment`);
+            setCart(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const subtrairItem = async (produto: any) => {
+        try {
+            const res = await axios.patch(`/api/cart/${produto.id}/subtract`);
+            setCart(res.data);
         } catch (error) {
             console.error(error);
         }
@@ -65,10 +83,14 @@ const Cart = () => {
                             <div><img src={produto.imagem} className="max-h-[80px]"></img></div>
                             <div className="ml-auto flex flex-col">
                                 <p>Valor unitário: R${produto.valor}</p>
-                                <Button onClick={() => removerCarrinho(produto)} className="hover:bg-red-400 ml-auto">Remover</Button>
+                                <Button onClick={() => deletarItem(produto)} className="hover:bg-red-400 ml-auto">Remover</Button>
                             </div>
                         </CardContent>
-                        <CardDescription className="ml-2">Quantidade: {produto.quantidade}</CardDescription>
+                        <CardDescription className="ml-2 flex flex-row gap-1">
+                            <Button onClick={() => subtrairItem(produto)} size="icon-xs">-</Button>
+                            <p>Quantidade: {produto.quantidade}</p>
+                            <Button onClick={() => incrementarItem(produto)} size="icon-xs">+</Button>
+                        </CardDescription>
                     </Card>
                     )))}
                 </div>
