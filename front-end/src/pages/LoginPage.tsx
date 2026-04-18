@@ -9,7 +9,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="flex w-[100vw] justify-center p-20">
+        <div className="flex w-[98vw] justify-center p-20">
             <Card className="w-md">
                 <CardHeader>
                     <CardTitle>Login to your account</CardTitle>
