@@ -27,14 +27,18 @@ const Header = () => {
                                 </NavigationMenuList>
                                 <NavigationMenuList className="flex gap-20 h-12">
                                     <NavigationMenuItem>
-                                        <NavigationMenuLink>Login</NavigationMenuLink>
-                                    </NavigationMenuItem>
-                                    <NavigationMenuItem>
-                                        <NavigationMenuLink>Registrar</NavigationMenuLink>
+                                        <NavigationMenuLink>
+                                            <Link to='/login'>Login</Link>
+                                        </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink>
-                                            <Link to={"/cart"}><img className="max-h-[30px]" src="/images/carrinho.png"></img></Link>
+                                            <Link to='/signup'>Registrar</Link>
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
+                                    <NavigationMenuItem>
+                                        <NavigationMenuLink>
+                                            <Link to={'/cart'}><img className="max-h-[30px]" src="/images/carrinho.png"></img></Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                 </NavigationMenuList>
