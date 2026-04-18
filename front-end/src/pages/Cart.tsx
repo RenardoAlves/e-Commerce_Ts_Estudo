@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import type { CartItem } from "../../../back-end/src/models/cart";
+import axios from 'axios';
 
 const Cart = () => {
 
@@ -27,13 +28,22 @@ const Cart = () => {
 
     }, []);
 
+    const removerCarrinho = async (produto: any) => {
+        try {
+            await axios.delete(`/api/cart/${produto.id}`)
+            setCart(prev => prev.filter(item => item.id !== produto.id));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const subtotal = cart.reduce((acc, item) => {
         return acc+ item.valor * item.quantidade;
     }, 0)
 
 
     return(
-        <div className="bg-white mt-5 w-[97.5vw] py-8 px-15 flex flex-col">
+        <div className="bg-white mt-5 w-[97.5vw] py-8 px-15 flex flex-col rounded-md">
             <div className="bg-white w-full flex flex-row">
                 <div className="basis-256 mr-10 bg-white flex flex-col gap-10">
                     { loading ? (
@@ -53,7 +63,10 @@ const Cart = () => {
                         <CardAction className="ml-2">{produto.nome}</CardAction>
                         <CardContent className="flex flex-row">
                             <div><img src={produto.imagem} className="max-h-[80px]"></img></div>
-                            <div className="ml-auto">Valor unitário: R${produto.valor}</div>
+                            <div className="ml-auto flex flex-col">
+                                <p>Valor unitário: R${produto.valor}</p>
+                                <Button onClick={() => removerCarrinho(produto)} className="hover:bg-red-400 ml-auto">Remover</Button>
+                            </div>
                         </CardContent>
                         <CardDescription className="ml-2">Quantidade: {produto.quantidade}</CardDescription>
                     </Card>

@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import produtos from "../../../back-end/src/data/produtosTeste";
 import { Button } from "@/components/ui/button";
 import axios from 'axios';
-import type { CartItem } from "../../../back-end/src/models/cart";
 
 const ProductPage = () => {
 
