@@ -38,3 +38,35 @@ export const removeItem = (req: Request, res: Response) => {
 
     res.json(cart);
 };
+
+export const incrementItem = (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    const item = cart.find(p => p.id === Number(id));
+
+    if (!item) {
+        return res.status(404).json({ error: "Item não encontrado" });
+    }
+
+    item.quantidade += 1;
+
+    res.json(cart);
+}
+
+export const subtractItem = (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    const index = cart.findIndex(p => p.id === Number(id));
+
+    if (index === -1) {
+        return res.status(404).json({ error: "Item não encontrado" });
+    }
+
+    if (cart[index].quantidade > 1) {
+        cart[index].quantidade -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+
+    res.json(cart);
+}
