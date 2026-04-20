@@ -12,13 +12,13 @@ export const login = async (req: Request, res: Response) => {
         })
 
         if (!user) {
-            return res.status(400).json({ error: 'Credenciais inválidas' })
+            return res.status(401).json({ error: 'Credenciais inválidas' })
         }
 
         const validPassword = await bcrypt.compare(password, user.password)
 
         if (!validPassword) {
-            return res.status(400).json({ error: 'Credenciais inválidas' })
+            return res.status(401).json({ error: 'Credenciais inválidas' })
         }
 
         const token = jwt.sign(
@@ -28,6 +28,7 @@ export const login = async (req: Request, res: Response) => {
         )
 
         return res.json({ token })
+        
     } catch (error) {
         console.error(error)
         return res.status(500).json({ error: 'Erro no login' })

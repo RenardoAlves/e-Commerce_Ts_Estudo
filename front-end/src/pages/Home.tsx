@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import produtos from "../../../back-end/src/data/produtosTeste";
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 const Home = () => {

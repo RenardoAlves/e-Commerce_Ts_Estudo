@@ -37,7 +37,7 @@ const Cart = () => {
         }
     }
 
-    const incrementarItem = async (produto: any, res: Request) => {
+    const incrementarItem = async (produto: any) => {
         try {
             const res = await axios.patch(`/api/cart/${produto.id}/increment`);
             setCart(res.data);
