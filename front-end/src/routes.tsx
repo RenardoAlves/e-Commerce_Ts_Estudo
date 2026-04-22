@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 
 const MainRoutes = () => {
+
     return (
         <Routes>
             <Route path='/' element={<Home />} />

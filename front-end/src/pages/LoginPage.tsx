@@ -5,10 +5,12 @@ import { Label } from "@/components/ui/label"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 const LoginPage = () => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const { login } = useAuth()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -27,7 +29,7 @@ const LoginPage = () => {
 
             const token = response.data.token
 
-            localStorage.setItem('token', token)
+            login(token)
 
             navigate('/')
 
