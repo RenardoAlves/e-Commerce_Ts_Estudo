@@ -62,8 +62,14 @@ export const subtractItem = (req: Request, res: Response) => {
         return res.status(404).json({ error: "Item não encontrado" });
     }
 
-    if (cart[index].quantidade > 1) {
-        cart[index].quantidade -= 1;
+    const item = cart[index];
+
+    if (!item) {
+        return res.status(404).json({ error: "Erro ao processar item" });
+    }
+
+    if (item.quantidade > 1) {
+        item.quantidade -= 1;
     } else {
         cart.splice(index, 1);
     }
