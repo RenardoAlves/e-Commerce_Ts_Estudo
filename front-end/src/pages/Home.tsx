@@ -8,7 +8,7 @@ const Home = () => {
         <div>
             <div className="bg-white mt-5 w-[97.5vw] py-8 px-15 flex flex-col justify-center items-center">
                 <p className="mb-7">Confira nosso estoque</p>
-                <img src="./img/card-principal-roupas.jpeg" className="max-w-250"></img>
+                <img src="/images/card-principal-roupas.jpeg" className="max-w-250"></img>
                 <p className="p-10">Produtos</p>
                 <div className="grid grid-cols-4 gap-20">
                     {produtos.map((produto) => (
